@@ -4,13 +4,14 @@ Corey Schafer YouTube series
 
 ## 1 - Getting Started
 
-Install flask locally
+#### Install flask locally
 3:30 `pip intstall flask` // install flask locally
 > Check install
-- go to python interpreter
-- import flask (if no errors, then success)
+> - go to python interpreter
+> - import flask (if no errors, then success)
 
 
+#### Start Project
 - open project directory
 - create application.py
 - paste following to begin

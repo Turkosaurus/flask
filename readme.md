@@ -1,5 +1,7 @@
 # Flask Tutorial
 Corey Schafer YouTube series
+[link to 1^st video](https://www.youtube.com/watch?v=MwZwr5Tvyxo)
+
 ---
 
 ## 1 - Getting Started
@@ -21,7 +23,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hellow World!"```
+    return "Hello World!"```
 
 @decorators
-: "a way to add additional functionality to additional functions"
+: "a way to add additional functionality to additional functions" 

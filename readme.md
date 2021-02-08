@@ -8,7 +8,7 @@ Corey Schafer YouTube series
 ## 1 - Getting Started
 
 #### Install flask locally
-3:30 `pip intstall flask` // install flask locally
+`pip intstall flask` // install flask locally
 > Check install
 > - go to python interpreter
 > - import flask (if no errors, then success)
@@ -16,7 +16,7 @@ Corey Schafer YouTube series
 
 #### Start Project
 - open project directory
-- create application.py [^1] with the following code
+- create application.py[^1] with the following code
 ```
 from flask import Flask
 app = Flask(__name__)
@@ -27,7 +27,7 @@ def hello():
     return "Hello World!" 
 ```
 
-decorators
+@ decorators
 : "a way to add additional functionality to functions"
 
 #### Set environment variables
@@ -54,10 +54,12 @@ if __name__ = '__main__':
 Now, instead of using `flask run` and using environment variables, run server by invoking `python application.py`
 
 #### Add more routes
+- add `/home` to `/`
+- rename `hello()` to `home()`
 ```
 @app.route("/")
-@app.route("/")
-def ~~hello~~home():
+@app.route("/home")
+def home():
     return "Hello World!" 
 
 @app.route("/about:)
@@ -69,3 +71,5 @@ def about ():
 [^1]: Though Corey uses `flaskblog.py`, I have opted for the standard use of `application.py`
 
 - - -
+
+## 2 - 

@@ -1,7 +1,5 @@
 # Flask Tutorial
-Corey Schafer YouTube series
-
-[link to first video](https://www.youtube.com/watch?v=MwZwr5Tvyxo)
+Corey Schafer - YouTube Flask series [(link to first video)](https://www.youtube.com/watch?v=MwZwr5Tvyxo)
 
 ---
 
@@ -16,7 +14,7 @@ Corey Schafer YouTube series
 
 #### Start Project
 - open project directory
-- create application.py[^1] with the following code
+- create application.py [^1] with the following code
 ```
 from flask import Flask
 app = Flask(__name__)

@@ -130,3 +130,30 @@ TODO
     {% endfor %}
 {% endblock content %}
 ```
+
+- change about.html to also extend layout.html
+```
+{% extends "layout.html" %}
+{% block content %}
+    <h1>About Page</h1>
+{% endblock content %}
+```
+
+## Integrate Bootstrap
+- Download basic starter template elements
+    - Meta Tags
+    ```
+ <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">    
+    ```
+    - Bootstrap CSS
+    ```
+    
+    ```
+    - JavaScript
+    ```
+    
+    ```
+
+- Wrap layout.html block content in a `div class="container"`
+

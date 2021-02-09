@@ -139,21 +139,58 @@ TODO
 {% endblock content %}
 ```
 
-## Integrate Bootstrap
+#### Integrate Bootstrap
 - Download basic starter template elements
     - Meta Tags
     ```
- <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     ```
+
     - Bootstrap CSS
     ```
-    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">        
     ```
+
     - JavaScript
     ```
-    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     ```
 
 - Wrap layout.html block content in a `div class="container"`
 
+
+#### Integrate Bootstrap Elements
+> lots of rapid copy/paste from existing repo here
+
+
+###### Note: this build excludes the following environment variable alternative
+```
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+---
+
+## 3 - Forms & Validating User Input
+
+#### Create user page
+- install WTForms with `pip install flask-wtf`
+- create `forms.py` alongside `application.py` for ease of management
+- Add Registration
+```
+class ResistrationForm(FlaskForm):
+    username - StringField('Username', 
+                        validators=[DataRequired(min=2, max=20)])
+    email = StringField('Email',
+                        validators=[DataRequired(), Email()j])
+    password = PasswordField('Password', 
+                        validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', 
+                        validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Sign Up')
+```
+- Add Login

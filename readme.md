@@ -180,17 +180,98 @@ if __name__ == '__main__':
 #### Create user page
 - install WTForms with `pip install flask-wtf`
 - create `forms.py` alongside `application.py` for ease of management
-- Add Registration
+- Add Registration form
+    ```
+    class ResistrationForm(FlaskForm):
+        username - StringField('Username', 
+                            validators=[DataRequired(min=2, max=20)])
+        email = StringField('Email',
+                            validators=[DataRequired(), Email()j])
+        password = PasswordField('Password', 
+                            validators=[DataRequired()])
+        confirm_password = PasswordField('Confirm Password', 
+                            validators=[DataRequired(), EqualTo('password')])
+        submit = SubmitField('Sign Up')
+    ```
+- Add Login form
+    ```
+    class LoginForm(FlaskForm):
+        username - StringField('Email', 
+                            validators=[DataRequired(), Email()])
+        email = StringField('Email',
+                            validators=[DataRequired()])
+        password = PasswordField('Password', 
+                            validators=[DataRequired()])
+        remember = BooleanField('Remember Me')
+        submit = SubmitField('Login')
+    ```
+
+#### Updates to application.py
+- Set 'Secret Key'
+    - from the python interpreter
+        ```
+        import secrets
+        secrets.token_hex(16)
+        ```
+
+    - Set that value in `application.py` to app.config['SECRET_KEY'] = <secretkey>
+
+    - This will later be set as an environment variable
+
+- Import appropriate librabies
+    ```
+    from forms import RegistrationForm, LoginForm
+    ```
+
+#### Add register and login routes
+- Create Registration Route
+    ```
+    @app.route("/register")
+    def register():
+        return render_template('register.html', title='Register', form=form))
+    ```
+
+- Create Login Route
+    ```
+    @app.route("/login")
+    def login():
+        return render_template('login.html', title='Login', form=form))
+    ```
+
+#### Add register and login html
+- Create templates for `register.html` and `login.html`
+
+- Add register and login routes to application.py
+    ```
+    @app.route("/register", methonds=['GET', 'POST'])
+    ```
+
+- Import flash and redirect
+    ```
+    from flask import Flask, render_template, url_for, flash, redirect
+    ```
+
+- Validate form data and create sucess message from flash
+    ```
+    form = RegistrationForm()
+    if form.validate_on_sumbit():
+        flash(f'Account created for {form.username.data}!', 'success')
+    ```
+
+- Add redirection upon registration success
+    ```
+    return redirect(url_for('home'))
+    ```
+
+#### Add conditional templating for messages in layout.html
 ```
-class ResistrationForm(FlaskForm):
-    username - StringField('Username', 
-                        validators=[DataRequired(min=2, max=20)])
-    email = StringField('Email',
-                        validators=[DataRequired(), Email()j])
-    password = PasswordField('Password', 
-                        validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password', 
-                        validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Sign Up')
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 ```
-- Add Login

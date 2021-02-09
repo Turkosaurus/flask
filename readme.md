@@ -70,4 +70,63 @@ def about ():
 
 - - -
 
-## 2 - 
+## 2 - Templates & Variables
+
+#### Create Templates Directory
+`mkdir templates`
+`cd templates`
+`touch home.html`
+
+#### Import "render_template"
+`from flask import Flask, render_template`
+change `return` to `render_template('home.html')`
+
+#### Create Global Dictionaries for Post Data
+posts = {}
+
+TODO
+
+
+#### Pass Variables
+`render_template('home.html' posts=posts)`
+
+#### Loop Jinja Templates
+```
+    <body>
+        {% for post in posts %}
+            <h1>{{ post.title }}</h1>
+            <p>By {{ post.author }} on {{ post.date_posted }} </p>
+            <p>{{ post.content</p> 
+        {% endfor %}
+    </body>
+```
+
+#### Create Conditional Title
+```
+    <head>
+        {% if title %}
+            <title>Flask Blog - {{ title }}</title>
+        {% else %}
+            <title>Flask Blog</title>
+        {% endif %}
+    </head>
+```
+
+#### About Page: hard code title variable
+`return render_template('about.html', title='About')`
+
+
+#### Template Inheritance
+- create layout.html, use block keyword `{% block content %}{% endblock %}`
+
+- change home.html to extend layout.html
+```
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <h1>{{ post.title }}</h1>
+        <p>By {{ post.author }} on {{ post.date_posted }} </p>
+        <p>{{ post.content</p> 
+    {% endfor %}
+{% endblock content %}
+```

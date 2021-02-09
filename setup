@@ -1,0 +1,11 @@
+export FLASK_APP=application.py
+echo setting Flask app to application.py...
+echo $FLASK_APP
+
+export FLASK_DEBUG=1
+echo Setting Flask debug to True...
+echo $FLASK_DEBUG
+
+export cs50=78f8cfa8fb0c848b9633431cac7eecdf24d0c556
+echo setting the cs50 GitHub key
+echo $cs50
